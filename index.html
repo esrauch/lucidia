@@ -6,6 +6,10 @@
             border: 0;
             margin: 0;
             padding: 0;
+            overscroll-behavior: none;
+            overflow-y: hidden;
+            touch-action: none;
+            user-select: none;
         }
         canvas, video {
             top: 0;
@@ -16,12 +20,50 @@
             width: 100%;
             height: 100%;
         }
+        #controls {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rebeccapurple;
+        }
+        .control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            background-color: salmon;
+            height: 100px;
+            width: 50px;
+            margin: 5px;
+            border: 4px solid transparent;
+        }
+
+        .control.selected-control {
+            border: 4px solid black;
+        }
+
+        .translucent {
+            opacity: 0.5;
+        }
+        .grayscale {
+            filter: grayscale(100%)
+        }
     </style>
     <link rel="manifest" href="/manifest.json">
+    <link rel="favicon" href="/images/icons-192.png">
 </head>
 <body>
     <video></video>
     <canvas></canvas>
+    <div id="controls">
+        <div id="capture" class="control">Capture</div>
+        <div id="lucidia" class="control">Lucidia</div>
+        <div id="filter" class="control">Filter</div>
+    </div>
     <script type="module" src="out/main.js"></script>
     <script>
     if ('serviceWorker' in navigator) {

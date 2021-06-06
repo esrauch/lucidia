@@ -1,8 +1,11 @@
-const cacheName = 'v1';
+const cacheName = 'v2';
 const contentToCache = [
+    /*
     '/',
     '/index.html',
     '/out/main.js',
+    '/manifest.json',
+    */
 ];
 
 self.addEventListener('install', ev => {
