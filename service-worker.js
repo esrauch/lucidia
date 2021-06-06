@@ -1,4 +1,4 @@
-const cacheName = '1';
+const cacheName = 'v1';
 const contentToCache = [
     '/',
     '/index.html',
@@ -12,12 +12,7 @@ self.addEventListener('install', ev => {
 });
 
 self.addEventListener('fetch', ev => {
-    ev.respondWith(async () => {
-        const r = await caches.match(e.request);
-        if (r) return r;
-        const response = await fetch(e.request);
-        const cache = await caches.open(cacheName);
-        cache.put(e.request, response.clone());
-        return response;
-    });
+    ev.respondWith(
+        caches.match(ev.request).then(response => response || fetch(ev.request))
+    );
 });
