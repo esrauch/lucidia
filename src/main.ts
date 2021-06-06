@@ -8,11 +8,13 @@ const video = document.querySelector('video')!
 const captureBtn = document.querySelector('#capture')!
 const lucidiaBtn = document.querySelector('#lucidia')!
 const filterBtn = document.querySelector('#filter')!
+const gridBtn = document.querySelector('#grid')!
 const openBtn = document.querySelector('#open')!
 const saveBtn = document.querySelector('#save')!
 
 // A hidden input to let users select files
 const fileInput = document.querySelector('input')!
+const grid = document.querySelector('#displayGrid')!
 
 let cameraStarted = false
 
@@ -57,6 +59,11 @@ function toggleGrayscale() {
     filterBtn.classList.toggle('selected-control')
 }
 
+function toggleGrid() {
+    gridBtn.classList.toggle('selected-control')
+    grid.classList.toggle('hidden')
+}
+
 function startCamera() {
     startLiveCamera().then(() => {
         cameraStarted = true
@@ -84,6 +91,7 @@ function saveAs() {
 captureBtn.addEventListener('click', copyVideoToCanvas)
 lucidiaBtn.addEventListener('click', toggleLucidia)
 filterBtn.addEventListener('click', toggleGrayscale)
+gridBtn.addEventListener('click', toggleGrid);
 openBtn.addEventListener('click', () => fileInput.click())
 saveBtn.addEventListener('click', saveAs);
 

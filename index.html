@@ -14,7 +14,8 @@
         }
 
         canvas,
-        video {
+        video,
+        table {
             top: 0;
             bottom: 0;
             left: 0;
@@ -22,6 +23,13 @@
             position: absolute;
             width: 100%;
             height: 100%;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+        th,td {
+            border: 1px solid black !important;
         }
 
         #controls {
@@ -56,6 +64,10 @@
             opacity: 0.5;
         }
 
+        .hidden {
+            display:none;
+        }
+
         .grayscale {
             filter: contrast(300%) brightness(150%) grayscale(100%)
         }
@@ -67,10 +79,18 @@
 <body>
     <video></video>
     <canvas></canvas>
+    <table id="displayGrid" class="hidden">
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+    </table>
+
     <div id="controls">
         <div id="capture" class="control">Capture</div>
         <div id="lucidia" class="control">Lucidia</div>
         <div id="filter" class="control">Filter</div>
+        <div id="grid" class="control">Grid</div>
         <div id="open" class="control">Open</div>
         <div id="save" class="control">Save</div>
     </div>
@@ -81,5 +101,5 @@
     }
     </script>
 
-    <input style="opacity: 0;" id="imginput" type="file" accept="image/*" />
+    <input class="hidden" id="imginput" type="file" accept="image/*" />
 </body>
