@@ -1,11 +1,9 @@
 const cacheName = 'v3';
 const contentToCache = [
-    /*
     '/',
     '/index.html',
     '/out/main.js',
     '/manifest.json',
-    */
 ];
 
 self.addEventListener('install', ev => {
